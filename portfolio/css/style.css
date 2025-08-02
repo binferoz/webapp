@@ -1,0 +1,52 @@
+body {
+    background-color: #f8f9fa;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+section.container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 2rem 2rem 1rem 2rem;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.card-title {
+    font-weight: 600;
+}
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: 180px;
+    object-fit: cover;
+}
+form .form-group label {
+    font-weight: 500;
+}
+form .btn-primary {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.timeline {
+    list-style: none;
+    padding-left: 0;
+}
+.timeline li {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+.timeline li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    background: #007bff;
+    border-radius: 50%;
+} 

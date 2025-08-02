@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Student Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar (Bootstrap) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.html">My Portfolio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
+                <li class="nav-item active"><a class="nav-link" href="projects.html">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <a class="dropdown-item" href="services.html">Our Services</a>
+                        <a class="dropdown-item" href="signup.html">Sign Up</a>
+                        <a class="dropdown-item" href="signin.html">Sign In</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <section class="container my-5">
+        <h1 class="mb-4">Projects</h1>
+        <div class="row" id="projects-list">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Instagram</h5>
+                        <p class="card-text">A social media platform.</p>
+                        <p class="card-text"><small>By: Adnan Feroz</small></p>
+                        <a href="https://www.instagram.com/" target="_blank">View Project</a>
+                        <button class="btn btn-danger btn-sm mt-2 delete-project">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">WhatsApp</h5>
+                        <p class="card-text">A social media platform.</p>
+                        <p class="card-text"><small>By:Adnan Feroz</small></p>
+                        <a href="https://www.whatsapp.com/" target="_blank">View Project</a>
+                        <button class="btn btn-danger btn-sm mt-2 delete-project">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Facebook</h5>
+                        <p class="card-text">A social media platform.</p>
+                        <p class="card-text"><small>By: Adnan Feroz</small></p>
+                        <a href="https://www.facebook.com/" target="_blank">View Project</a>
+                        <button class="btn btn-danger btn-sm mt-2 delete-project">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/validation.js"></script>
+    <script>
+    // Add Project with JS only
+    const addProjectForm = document.getElementById('addProjectForm');
+    const projectsList = document.getElementById('projects-list');
+    addProjectForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!addProjectForm.checkValidity()) {
+            addProjectForm.classList.add('was-validated');
+            return;
+        }
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const image = document.getElementById('image').value;
+        const link = document.getElementById('link').value;
+        const author = document.getElementById('author').value || 'You';
+        // Create new card
+        const col = document.createElement('div');
+        col.className = 'col-md-4 mb-4';
+        col.innerHTML = `<div class="card h-100">
+            ${image ? `<img src="${image}" class="card-img-top" alt="Project Image">` : ''}
+            <div class="card-body">
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text">${description}</p>
+                <p class="card-text"><small>By: ${author}</small></p>
+                ${link ? `<a href="${link}" target="_blank">View Project</a>` : ''}
+                <button class="btn btn-danger btn-sm mt-2 delete-project">Delete</button>
+            </div>
+        </div>`;
+        // Add to top
+        projectsList.insertBefore(col, projectsList.firstChild);
+        addProjectForm.reset();
+        addProjectForm.classList.remove('was-validated');
+    });
+    // Delete project functionality
+    projectsList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('delete-project')) {
+            const card = e.target.closest('.col-md-4');
+            if (card) card.remove();
+        }
+    });
+    </script>
+</body>
+</html> 
